@@ -4,7 +4,6 @@ Rails.application.routes.draw do
         resources :artists, :entries, :journals, :moods, :playlists, :quotes, :tests, :tracks
         get 'login', to: 'logins#create'
         post 'users/new', to: 'users#create'
-        get 'users/new', to: 'users#create'
       end
     end
   end

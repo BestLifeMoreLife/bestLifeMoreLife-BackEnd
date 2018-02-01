@@ -13,7 +13,6 @@ class Api::V1::UsersController < ApplicationController
     auth_params = SpotifyAdapter.login(params[:code])
     user_data = SpotifyAdapter.getUserData(auth_params["access_token"])
     user = User.find_or_create_by(user_params(user_data))
-    byebug
     render json: user
   end
   def update
@@ -29,7 +28,6 @@ def user_params(user_data)
   params = {
     username: user_data["id"],
     display_name: user_data["display_name"],
-    track_id: 1
   }
 end
 end
