@@ -10,7 +10,7 @@ class Api::V1::UsersController < ApplicationController
     render json: @user
   end
   def create
-    auth_params = SpotifyAdapter.login(params[:code])
+    auth_params = SpotifyAdapter.login(params[:spotify_code])
     user_data = SpotifyAdapter.getUserData(auth_params["access_token"])
     user = User.find_or_create_by(user_params(user_data))
     render json: user
