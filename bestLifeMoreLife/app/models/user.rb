@@ -6,6 +6,6 @@ class User < ApplicationRecord
   has_many :journals
   has_many :entries, through: :journals
   has_one :track
-
+  has_one :artist, through: :track
 
 end

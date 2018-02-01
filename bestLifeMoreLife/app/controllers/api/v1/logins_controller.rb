@@ -1,10 +1,10 @@
 class Api::V1::LoginsController < ApplicationController
   def create
     query_params = {
-      client_id: "41e6d53b8d3d4b67949aa7b8212cb4d3",
+      client_id: ENV["CLIENT_ID"],
       response_type: "code",
-      redirect_uri: "http://localhost:3001/auth",
-      scope: "user-library-read user-library-modify user-top-read user-modify-playback-state playlist-modify-public playlist-modify-private",
+      redirect_uri: ENV["REDIRECT_URI"],
+      scope: ENV["SCOPES"],
       show_dialog: true
     }
 
