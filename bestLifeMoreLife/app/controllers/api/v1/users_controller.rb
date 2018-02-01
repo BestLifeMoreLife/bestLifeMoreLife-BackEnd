@@ -6,12 +6,15 @@ class Api::V1::UsersController < ApplicationController
   end
   def show
     byebug
-    @user = User.all.find(params[:id])
+    @user = User.all.find(params[:password])
     render json: @user
   end
   def create
-    @user = User.create(user_params)
-    render json: @user
+    auth_params = SpotifyAdapter.login(params[:code])
+    user_data = SpotifyAdapter.getUserData(auth_params["access_token"])
+    user = User.find_or_create_by(user_params(user_data))
+    byebug
+    render json: user
   end
   def update
 
@@ -22,7 +25,11 @@ class Api::V1::UsersController < ApplicationController
 
 private
 
-  def user_params
-    params.require(:user).permit([:username, :password, :email, :score])
-  end
+def user_params(user_data)
+  params = {
+    username: user_data["id"],
+    display_name: user_data["display_name"],
+    track_id: 1
+  }
+end
 end

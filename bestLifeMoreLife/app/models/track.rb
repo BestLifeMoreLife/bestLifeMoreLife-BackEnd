@@ -1,5 +1,8 @@
 class Track < ApplicationRecord
+  has_one :user
   belongs_to :artist
-  has_many :users
 
+  def name
+    @name = "#{self.artist.name}'s Track'"
+  end
 end

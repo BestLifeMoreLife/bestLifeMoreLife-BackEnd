@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130214229) do
+ActiveRecord::Schema.define(version: 20180201143924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,12 +100,12 @@ ActiveRecord::Schema.define(version: 20180130214229) do
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
+    t.bigint "user_id"
     t.bigint "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_tracks_on_artist_id"
+    t.index ["user_id"], name: "index_tracks_on_user_id"
   end
 
   create_table "user_moods", force: :cascade do |t|
@@ -128,12 +128,12 @@ ActiveRecord::Schema.define(version: 20180130214229) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "email"
     t.integer "score"
-    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "track_id"
+    t.string "display_name"
+    t.string "access_token"
+    t.string "refresh_token"
   end
 
   add_foreign_key "artist_moods", "artists"
@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(version: 20180130214229) do
   add_foreign_key "quote_moods", "quotes"
   add_foreign_key "quotes", "artists"
   add_foreign_key "tracks", "artists"
+  add_foreign_key "tracks", "users"
   add_foreign_key "user_moods", "moods"
   add_foreign_key "user_moods", "users"
   add_foreign_key "user_tests", "tests"
