@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180201222059) do
+ActiveRecord::Schema.define(version: 20180201223511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,10 +28,9 @@ ActiveRecord::Schema.define(version: 20180201222059) do
   create_table "answers", force: :cascade do |t|
     t.text "content"
     t.integer "score"
-    t.bigint "questions_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["questions_id"], name: "index_answers_on_questions_id"
+    t.integer "question_id"
   end
 
   create_table "artist_moods", force: :cascade do |t|
@@ -96,6 +95,7 @@ ActiveRecord::Schema.define(version: 20180201222059) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "test_id"
   end
 
   create_table "quote_moods", force: :cascade do |t|
@@ -162,7 +162,6 @@ ActiveRecord::Schema.define(version: 20180201222059) do
 
   add_foreign_key "answer_moods", "answers", column: "answers_id"
   add_foreign_key "answer_moods", "moods", column: "moods_id"
-  add_foreign_key "answers", "questions", column: "questions_id"
   add_foreign_key "artist_moods", "artists"
   add_foreign_key "artist_moods", "moods"
   add_foreign_key "entries", "journals"
