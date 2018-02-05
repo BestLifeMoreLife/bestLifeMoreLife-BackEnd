@@ -5,9 +5,7 @@ class Api::V1::UsersController < ApplicationController
     render json: @users
   end
   def show
-    byebug
-    token = request.headers
-    @user = User.all.find(params[:password])
+    @user = User.all.find(params[:id])
     render json: @user
   end
   def create
@@ -15,13 +13,17 @@ class Api::V1::UsersController < ApplicationController
     user_data = SpotifyAdapter.getUserData(auth_params["access_token"])
     user = User.find_or_create_by(user_params(user_data))
     user.update(access_token: issue_token({token: auth_params["access_token"]}), refresh_token: issue_token({token: auth_params["refresh_token"]}))
-    track = user.track ? user.track.name : nil
-    render json: {name: user.display_name, id: user.id, score: user.score, track: track, token: issue_token({token: user.username})}
+    render json: {name: user.display_name, id: user.id, score: user.score, track: user.track, token: issue_token({token: user.username})}
   end
   def update
-    @user = User.find(params[:user][:id])
-    @user.update(score:params[:score])
-    @user.save
+    user = User.find(params[:user][:id])
+    user.update(score:params[:score])
+    artist = user.match_with_artist
+    user.track.delete
+    user.track = Track.create(artist: artist)
+    user.save
+    track = Track.find_by(user: user)
+    render json: {name: user.display_name, id: user.id, score: user.score, track: track.name, token: issue_token({token: user.username})}
   end
   def destroy
 
