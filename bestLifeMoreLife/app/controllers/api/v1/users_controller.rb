@@ -19,7 +19,6 @@ class Api::V1::UsersController < ApplicationController
     user = User.find(params[:user][:id])
     user.update(score:params[:score])
     artist = user.match_with_artist
-    user.track.delete
     user.track = Track.create(artist: artist)
     user.save
     track = Track.find_by(user: user)

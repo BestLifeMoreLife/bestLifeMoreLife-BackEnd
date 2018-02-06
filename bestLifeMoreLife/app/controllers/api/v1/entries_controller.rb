@@ -1,14 +1,30 @@
 class Api::V1::EntriesController < ApplicationController
 
   def show
-
+    entry = Entry.find(params[:id])
+    render json: entry
   end
 
   def create
     entry = Entry.create(entry_params)
-    render json: entry
+    entries = Entry.all
+    render json: entries
   end
 
+  def update
+    entry = Entry.find(params[:id])
+    entry.update(content: params[:content])
+    entry.save
+    entries = Entry.all
+    render json: entries
+  end
+
+  def destroy
+    entry = Entry.find(params[:id])
+    entry.destroy
+    entries = Entry.all
+    render json: entries
+  end
   private
 
   def entry_params

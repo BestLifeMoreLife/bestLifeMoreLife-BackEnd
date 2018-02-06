@@ -1,7 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+test1 = Test.create(name: "Sign Up Quiz")
+test2 = Test.create(name: "New Entry Quiz")
+signUpQuestion1 = Question.create(content: "Test Question # 1", test_id: 1)
+signUpQuestion2 = Question.create(content: "Test Question # 2", test_id: 1)
+newEntryQuestion1 = Question.create(content: "Test Question # 1", test_id: 2)
+newEntryQuestion2 = Question.create(content: "Test Question # 2", test_id: 2)
+signUpQuestion1Answer1 = Answer.create(question_id: 1, content: "Depressed", score: 1)
+signUpQuestion1Answer2 = Answer.create(question_id: 1, content: "Defeated", score: 2)
+signUpQuestion1Answer3 = Answer.create(question_id: 1, content: "Angry", score: 3)
+signUpQuestion1Answer4 = Answer.create(question_id: 1, content: "Heartbroken", score: 4)
+signUpQuestion2Answer1 = Answer.create(question_id: 2, content: "Depressed", score: 1)
+signUpQuestion2Answer2 = Answer.create(question_id: 2, content: "Defeated", score: 2)
+signUpQuestion2Answer3 = Answer.create(question_id: 2, content: "Angry", score: 3)
+signUpQuestion2Answer4 = Answer.create(question_id: 2, content: "Heartbroken", score: 4)
+kidCudi = Artist.create(name: "Kid Cudi", score: 1, photos: {})
+kanyeWest = Artist.create(name: "Kanye West", score: 2, photos: {})
+eminem = Artist.create(name: "Eminem", score: 3, photos: {})
+chrisBrown = Artist.create(name: "Chris Brown", score: 4, photos: {})
