@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206152554) do
+ActiveRecord::Schema.define(version: 20180212024043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,12 @@ ActiveRecord::Schema.define(version: 20180206152554) do
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.hstore "photos", default: {}, null: false
+    t.string "home_photo"
+    t.string "depressed_photo"
+    t.string "angry_photo"
+    t.string "happy_photo"
+    t.string "writing_photo"
+    t.string "listen_photo"
   end
 
   create_table "entries", force: :cascade do |t|
