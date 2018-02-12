@@ -22,7 +22,7 @@ class Api::V1::UsersController < ApplicationController
     user.track = Track.create(artist: artist)
     user.save
     track = Track.find_by(user: user)
-    render json: {name: user.display_name, id: user.id, score: user.score, track: track.name, token: issue_token({token: user.username})}
+    render json: {user: UserSerializer.new(user), token: issue_token({token: user.username})}
   end
   def destroy
 

@@ -2,7 +2,7 @@ class Api::V1::ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
-    render json: @artist
+    render json: @artists
   end
   def show
     @artist = Artist.all.find(params[:id])
