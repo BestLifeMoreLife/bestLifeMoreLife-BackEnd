@@ -34,3 +34,9 @@ kanyeWest2 = Playlist.create(link:"https://open.spotify.com/embed/user/cstvtprkn
 kanyeWest3 = Playlist.create(link: "https://open.spotify.com/embed/user/cstvtprkn23yelai6ikhucj6t/playlist/4T2tUV6gRaCslNdTJPGMfB", score:3, artist_id:2)
 kanyeWest4 = Playlist.create(link:"https://open.spotify.com/embed/user/cstvtprkn23yelai6ikhucj6t/playlist/476xtomUj0d0Wasqay3Gjd", score:4, artist_id:2)
 kanyeWest5 = Playlist.create(link:"https://open.spotify.com/embed/user/cstvtprkn23yelai6ikhucj6t/playlist/3jWysONYFNR7JfLDLKmmmO", score:5, artist_id:2)
+
+kanyeWestQuote1 = Quote.create(content:'I just needed time alone with my own thoughts, got treasures in my mind but couldnt open up my own vault', song:' - Power', artist_id:2, score:1)
+kanyeWestQuote1 = Quote.create(content:'They gon have to take my life before they take my drive, cuz when I was barely living thats what kept me alive',song:' - Bring Me Down',artist_id:2, score:2)
+kanyeWestQuote1 = Quote.create(content:'Im living in the future so my present is the past, my presence is a present kiss my *', song:' - Monster', artist_id:2, score:3)
+kanyeWestQuote1 = Quote.create(content:'You werent perfect but you made life worth it',song:' - Blame Game',artist_id:2, score:4)
+kanyeWestQuote1 = Quote.create(content:'We only making the highlights, tell my mama, that I only want my whole life to only be highlights',song:' - Highlights',artist_id:2, score:5)
