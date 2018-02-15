@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         post 'journals/new', to: 'journals#create'
         post 'entries/new', to: 'entries#create'
         post '/playlist', to: 'playlists#get_playlist'
+        post '/artists/:id/picture', to: 'artists#get_picture'
       end
     end
   end

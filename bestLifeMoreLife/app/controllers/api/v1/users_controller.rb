@@ -13,7 +13,7 @@ class Api::V1::UsersController < ApplicationController
     user_data = SpotifyAdapter.getUserData(auth_params["access_token"])
     user = User.find_or_create_by(user_params(user_data))
     user.update(access_token: issue_token({token: auth_params["access_token"]}), refresh_token: issue_token({token: auth_params["refresh_token"]}))
-    render json: {name: user.display_name, id: user.id, score: user.score, track: user.track, token: issue_token({token: user.username})}
+    render json: {user: UserSerializer.new(user), token: issue_token({token: user.username})}
   end
   def update
     user = User.find(params[:user][:id])

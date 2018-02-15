@@ -16,11 +16,12 @@ newEntryQuestion1Answer1 = Answer.create(question_id: 3, content: "I don't have 
 newEntryQuestion1Answer2 = Answer.create(question_id: 3, content: "There's no point in anything", score: 2)
 newEntryQuestion1Answer3 = Answer.create(question_id: 3, content: "I feel like I'm going to explode", score: 3)
 newEntryQuestion1Answer4 = Answer.create(question_id: 3, content: "I feel hurt by someone I love/trust", score: 4)
+newEntryQuestion1Answer5 = Answer.create(question_id: 3, content: "I feel great today", score: 5)
 newEntryQuestion2Answer1 = Answer.create(question_id: 4, content: "I need to feel understood", score: 0)
 newEntryQuestion2Answer2 = Answer.create(question_id: 4, content: "I need help getting over it", score: 6)
 #
 kidCudi = Artist.create(name: "Kid Cudi", score: 1, home_photo:"https://i.redd.it/emvjwjgulztz.png", depressed_photo:"https://pbs.twimg.com/media/CymmcOjXAAAPH-z.jpg", angry_photo:"http://20some.com/wp-content/uploads/2017/09/10547824_10152986124308586_6086290500636516698_o.jpg", happy_photo:"https://i1.wp.com/www.rehabonlinemag.com/wp-content/uploads/2016/10/kid-cudi.jpg?fit=1203%2C803", writing_photo:"https://images-na.ssl-images-amazon.com/images/I/B1qVEldBnNS._CR0,0,3840,2880_.png", listen_photo:"http://cdn3.hiphopmyway.com/wp-content/uploads/2015/07/kid-cudi-e1437666314575.jpg")
-kanyeWest = Artist.create(name: "Kanye West", score: 3, home_photo:"https://hdwallsource.com/img/2017/4/kanye-west-performing-hd-wallpaper-59575-61362-hd-wallpapers.jpg", depressed_photo:"https://i.imgur.com/8tSWKDe.jpg?1", angry_photo:"http://i.imgur.com/hG0rOzR.jpg", happy_photo:"http://5dwallpaper.com/wp-content/uploads/2017/07/kanye-west-HD-wallpaper-wp3807699.jpg", writing_photo:"http://static.djbooth.net/pics-features/rect/kanye-writing-book-hip-hop.jpg", listen_photo:"http://s3.amazonaws.com/digitaltrends-uploads-prod/2016/01/kanye-west-singer-rapper-musician.jpg")
+kanyeWest = Artist.create(name: "Kanye West", score: 3, home_photo:"https://hdwallsource.com/img/2017/4/kanye-west-performing-hd-wallpaper-59575-61362-hd-wallpapers.jpg", depressed_photo:"https://i.imgur.com/8tSWKDe.jpg?1", angry_photo:"http://5dwallpaper.com/wp-content/uploads/2017/07/kanye-west-HD-wallpaper-wp3807699.jpg", happy_photo:"http://i.imgur.com/hG0rOzR.jpg", writing_photo:"http://static.djbooth.net/pics-features/rect/kanye-writing-book-hip-hop.jpg", listen_photo:"http://s3.amazonaws.com/digitaltrends-uploads-prod/2016/01/kanye-west-singer-rapper-musician.jpg")
 
 
 kidCudi1 = Playlist.create(link: "https://open.spotify.com/embed/user/cstvtprkn23yelai6ikhucj6t/playlist/64l1bmWWPwxIQlwKrE4zbc" , score:1, artist_id:1)

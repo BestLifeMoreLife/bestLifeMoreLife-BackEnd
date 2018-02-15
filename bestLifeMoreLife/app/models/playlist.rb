@@ -5,7 +5,7 @@ class Playlist < ApplicationRecord
 
   def self.findPlaylist (artist, score)
     playlists = Playlist.all.select{|playlist| playlist.artist === artist}
-    user_score = score > 5 ? (score - 6) : score
+    user_score = score > 5 ? 5 : score
     playlists.find{|playlist| playlist.score === user_score}
   end
 end

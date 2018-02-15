@@ -15,4 +15,18 @@ class Artist < ApplicationRecord
     }
     scores
   end
+
+  def get_picture(mood_score)
+    case mood_score
+    when 1, 2
+      self.depressed_photo
+    when 3
+      self.angry_photo
+    when 4
+      self.angry_photo
+    else
+      self.happy_photo
+
+end
+  end
 end

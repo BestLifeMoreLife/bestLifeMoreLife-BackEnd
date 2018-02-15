@@ -1,9 +1,14 @@
 class Api::V1::EntriesController < ApplicationController
+  def index
+    blogs = Entry.all.select{|entry| entry.public === true}
+    render json: blogs
+  end
 
   def show
     entry = Entry.find(params[:id])
     render json: entry
   end
+
 
   def create
     entry = Entry.create(entry_params)

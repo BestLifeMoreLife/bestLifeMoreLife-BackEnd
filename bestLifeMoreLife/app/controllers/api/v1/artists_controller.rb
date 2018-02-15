@@ -12,11 +12,12 @@ class Api::V1::ArtistsController < ApplicationController
     @artist = Artist.create(artist_params)
     render json: @artist
   end
-  def update
-
-  end
-  def destroy
-
+  def get_picture
+    artist = Artist.find(params[:id])
+    score = params[:mood_score]
+    adjusted_score = score > 5 ? 5 : score
+    photo = artist.get_picture(adjusted_score)
+    render json: {photo: photo}
   end
 
 private
