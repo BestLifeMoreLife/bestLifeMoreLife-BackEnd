@@ -10,11 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180201143924) do
+ActiveRecord::Schema.define(version: 20180215012629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "answer_moods", force: :cascade do |t|
+    t.bigint "answers_id"
+    t.bigint "moods_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answers_id"], name: "index_answer_moods_on_answers_id"
+    t.index ["moods_id"], name: "index_answer_moods_on_moods_id"
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.text "content"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "question_id"
+  end
 
   create_table "artist_moods", force: :cascade do |t|
     t.bigint "artist_id"
@@ -30,7 +47,12 @@ ActiveRecord::Schema.define(version: 20180201143924) do
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.hstore "photos", default: {}, null: false
+    t.string "home_photo"
+    t.string "depressed_photo"
+    t.string "angry_photo"
+    t.string "happy_photo"
+    t.string "writing_photo"
+    t.string "listen_photo"
   end
 
   create_table "entries", force: :cascade do |t|
@@ -74,6 +96,13 @@ ActiveRecord::Schema.define(version: 20180201143924) do
     t.index ["artist_id"], name: "index_playlists_on_artist_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "test_id"
+  end
+
   create_table "quote_moods", force: :cascade do |t|
     t.bigint "quote_id"
     t.bigint "mood_id"
@@ -88,15 +117,15 @@ ActiveRecord::Schema.define(version: 20180201143924) do
     t.bigint "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "score"
+    t.string "song"
     t.index ["artist_id"], name: "index_quotes_on_artist_id"
   end
 
   create_table "tests", force: :cascade do |t|
     t.string "name"
-    t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "questions", array: true
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -134,8 +163,11 @@ ActiveRecord::Schema.define(version: 20180201143924) do
     t.string "display_name"
     t.string "access_token"
     t.string "refresh_token"
+    t.integer "track_id"
   end
 
+  add_foreign_key "answer_moods", "answers", column: "answers_id"
+  add_foreign_key "answer_moods", "moods", column: "moods_id"
   add_foreign_key "artist_moods", "artists"
   add_foreign_key "artist_moods", "moods"
   add_foreign_key "entries", "journals"

@@ -7,8 +7,8 @@ class SpotifyAdapter
 
    def self.body_params
    body = {
-     client_id: "41e6d53b8d3d4b67949aa7b8212cb4d3",
-     client_secret: "666cd2ecbd2c46feaa56ecdc09b2dd75"
+     client_id: ENV["CLIENT_ID"],
+     client_secret: ENV["CLIENT_SECRET"]
    }
  end
 
@@ -25,14 +25,9 @@ class SpotifyAdapter
     body = body_params.dup
     body[:grant_type] = "authorization_code"
     body[:code] = code
-    body[:redirect_uri] = "http://localhost:3000/api/v1/users/new"
-
-    authorize(body)
-  end
-
-  def self.authorize(body)
-    auth_response = RestClient.post("https://accounts.spotify.com/api/token", body)
-    JSON.parse(auth_response.body)
+    body[:redirect_uri] = "http://localhost:3001/auth"
+    response = RestClient.post("https://accounts.spotify.com/api/token", body)
+    JSON.parse(response.body)
   end
 
   def self.getUserData(access_token)
